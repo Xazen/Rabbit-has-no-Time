@@ -37,7 +37,7 @@ public class hole : MonoBehaviour {
 			} else {
 				newX = otherHole2.transform.position.x;
 			}
-			this.audio.PlayOneShot(this.jumpInHole);
+			//this.audio.PlayOneShot(this.jumpInHole);
 			player.transform.localPosition = new Vector3(newX, player.transform.localPosition.y, player.transform.localPosition.z);
 		}
 	}
