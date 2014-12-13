@@ -4,8 +4,6 @@ using System.Collections;
 public class CarrotCollector : MonoBehaviour 
 {
 	[SerializeField]
-	float carrotTimer = 4;
-	[SerializeField]
 	int requiredCarrotsForAttacking = 4;
 
 	private AngryMode angryMode;
@@ -24,18 +22,28 @@ public class CarrotCollector : MonoBehaviour
 		}
 	}
 
-	void OnCollisionEnter2D(Collision2D col)
+	void OnTriggerEnter2D(Collider2D col)
 	{
 		if (col.gameObject.name == "Carrot(Clone)") 
 		{
-			carrotCounter++;
-			Debug.Log("carrot counter: " + carrotCounter);
 			Destroy(col.gameObject);
 
-			if (carrotCounter == requiredCarrotsForAttacking)
+			if (carrotCounter < requiredCarrotsForAttacking)
 			{
+				carrotCounter++;
+
+			}
+
+			if (carrotCounter == 4){
 				angryMode.activateAngryMode();
 			}
+
+			Debug.Log("carrot counter: " + carrotCounter);
 		}
+	}
+
+	public void resetCounter()
+	{
+		carrotCounter = 0;
 	}
 }

@@ -2,23 +2,36 @@
 using System.Collections;
 
 public class AngryMode : MonoBehaviour {
-
+	
 	private bool activated = false;
-
 	private float punchFrequency = 2;
 	private float punchTimer = 0;
+	private float angryFrequency = 4;
+	private float angryTimer = 0;
+
+	CarrotCollector carrotCollector;
+	CarrotSpawner carrotSpawner;
 
 	// Use this for initialization
 	void Start () {
-	
+		carrotCollector = this.GetComponent<CarrotCollector> ();
+		carrotSpawner = GameObject.FindGameObjectWithTag ("CarrotSpawner").GetComponent<CarrotSpawner> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (activated) 
+		{
+			angryTimer += Time.deltaTime;
+			punchTimer += Time.deltaTime;
+		}
+		if (angryTimer >= angryFrequency) 
+		{
+			Debug.Log ("ANGRY MODE OFF");
+			deactivateAngryMode();
 
-		punchTimer += Time.deltaTime;
-
-		if (activated && punchTimer >= 2 && Input.GetButton ("Fire1")) 
+		}
+		if (activated && punchTimer >= punchFrequency && Input.GetButton ("Fire1")) 
 		{
 			punch ();
 		}
@@ -32,7 +45,16 @@ public class AngryMode : MonoBehaviour {
 
 	public void activateAngryMode()
 	{
-		Debug.Log ("angry");
+		Debug.Log ("ANGRY MODE ON");
 		activated = true;
+		carrotSpawner.deactivateSpawner ();
+	}
+	public void deactivateAngryMode()
+	{
+		Debug.Log ("ANGRY MODE OFF");
+		angryTimer = 0;
+		activated = false;
+		carrotCollector.resetCounter ();
+		carrotSpawner.activateSpawner ();
 	}
 }
