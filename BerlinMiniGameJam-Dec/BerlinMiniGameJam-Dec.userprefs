@@ -1,9 +1,20 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GroundSize.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/CarrotCollector.cs">
     <Files>
-      <File FileName="Assets/Scripts/GroundSize.cs" Line="11" Column="114" />
+      <File FileName="Assets/CarrotCollector.cs" Line="12" Column="35" />
+      <File FileName="../../Eigene/BerlinMiniJam/Code/LeapMotionProject/Assets/LeapMotionShooter/Scripts/AstroidCollision.cs" Line="25" Column="35" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Assembly-CSharp" expanded="True">
+            <Node name="Scripts" expanded="True" />
+            <Node name="CarrotCollector.cs" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
