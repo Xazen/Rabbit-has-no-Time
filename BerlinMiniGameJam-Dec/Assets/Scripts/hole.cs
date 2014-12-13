@@ -11,7 +11,10 @@ public class hole : MonoBehaviour {
 	private GameObject otherHole2;
 
 	private bool collide = false;
+
 	PlayerMove playerMove;
+	[SerializeField]
+	AudioClip jumpInHole;
 
 	void Start()
 	{
@@ -34,7 +37,7 @@ public class hole : MonoBehaviour {
 			} else {
 				newX = otherHole2.transform.position.x;
 			}
-
+			this.audio.PlayOneShot(this.jumpInHole);
 			player.transform.localPosition = new Vector3(newX, player.transform.localPosition.y, player.transform.localPosition.z);
 		}
 	}

@@ -16,6 +16,9 @@ public class AngryMode : MonoBehaviour {
 	private RabbitHealth wolfHealth;
 	private bool isCollidingWithWolf = false;
 
+	[SerializeField]
+	AudioClip punchSound;
+
 	CarrotCollector carrotCollector;
 	CarrotSpawner carrotSpawner;
 
@@ -52,6 +55,7 @@ public class AngryMode : MonoBehaviour {
 		if (isCollidingWithWolf) 
 		{
 			wolfHealth.hurt(attackPower);
+			this.audio.PlayOneShot(this.punchSound);
 		}
 	}
 
