@@ -12,20 +12,30 @@ public class WolfMove : MonoBehaviour {
 	[SerializeField]
 	private GameObject player;
 	[SerializeField]
+	private int attackPower = 1;
 
 	private float attackFrequency = 3.0f;
 	private float attackTimer = 0.0f;
+	private RabbitHealth rabbitHealth;
+
+	void Start()
+	{
+		rabbitHealth = player.GetComponent<RabbitHealth> ();
+	}
 
 	// Update is called once per frame
 	void Update () 
 	{
 		attackTimer += Time.deltaTime;
 
-		if (player.transform.localPosition.x < this.transform.localPosition.x) 
+		if (player != null) 
 		{
-			moveLeft ();
-		} else {
-			moveRight();
+			if (player.transform.localPosition.x < this.transform.localPosition.x) 
+			{
+				moveLeft ();
+			} else {
+				moveRight();
+			}
 		}
 	}
 
@@ -54,6 +64,8 @@ public class WolfMove : MonoBehaviour {
 	void attack()
 	{
 		attackTimer = 0;
+		rabbitHealth.hurt (attackPower);
+		player.transform.localPosition = new Vector3 (player.transform.localPosition.x, player.transform.localPosition.y, player.transform.localPosition.z);
 		Debug.Log ("Wolf attack");
 	}
 }

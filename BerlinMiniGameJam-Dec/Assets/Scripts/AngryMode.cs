@@ -2,12 +2,19 @@
 using System.Collections;
 
 public class AngryMode : MonoBehaviour {
-	
+
+	[SerializeField]
+	private int attackPower = 1;
+	[SerializeField]
+	private GameObject wolf;
+
 	private bool activated = false;
 	private float punchFrequency = 2;
 	private float punchTimer = 0;
 	private float angryFrequency = 4;
 	private float angryTimer = 0;
+	private RabbitHealth wolfHealth;
+	private bool isCollidingWithWolf = false;
 
 	CarrotCollector carrotCollector;
 	CarrotSpawner carrotSpawner;
@@ -16,6 +23,7 @@ public class AngryMode : MonoBehaviour {
 	void Start () {
 		carrotCollector = this.GetComponent<CarrotCollector> ();
 		carrotSpawner = GameObject.FindGameObjectWithTag ("CarrotSpawner").GetComponent<CarrotSpawner> ();
+		wolfHealth = wolf.GetComponent<RabbitHealth> ();
 	}
 	
 	// Update is called once per frame
@@ -41,6 +49,10 @@ public class AngryMode : MonoBehaviour {
 	{
 		punchTimer = 0;
 		Debug.Log ("punch");
+		if (isCollidingWithWolf) 
+		{
+			wolfHealth.hurt(attackPower);
+		}
 	}
 
 	public void activateAngryMode()
@@ -56,5 +68,21 @@ public class AngryMode : MonoBehaviour {
 		activated = false;
 		carrotCollector.resetCounter ();
 		carrotSpawner.activateSpawner ();
+	}
+
+	void OnTriggerEnter2D(Collider2D collider)
+	{
+		if (collider.gameObject.name == "Wolf") {
+			isCollidingWithWolf = true;
+				}
+
+	}
+
+	void OnTriggerExit2D(Collider2D collider)
+	{
+		if (collider.gameObject.name == "Wolf") {
+			isCollidingWithWolf = false;
+				}
+
 	}
 }

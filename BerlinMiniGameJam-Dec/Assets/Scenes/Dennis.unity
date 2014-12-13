@@ -644,11 +644,11 @@ GameObject:
   - 4: {fileID: 349739157}
   - 212: {fileID: 349739156}
   - 50: {fileID: 349739155}
-  - 61: {fileID: 349739154}
   - 114: {fileID: 349739158}
   - 61: {fileID: 349739160}
   - 114: {fileID: 349739159}
   - 114: {fileID: 349739161}
+  - 114: {fileID: 349739154}
   m_Layer: 0
   m_Name: Rabbit
   m_TagString: Untagged
@@ -656,17 +656,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!61 &349739154
-BoxCollider2D:
+--- !u!114 &349739154
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 349739153}
   m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Size: {x: 2.5, y: 2.81999993}
-  m_Center: {x: 0, y: 1.40999997}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2565e08f24d86459ca1b71181b21e5b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 4
 --- !u!50 &349739155
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -676,9 +677,9 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_FixedAngle: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -739,7 +740,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd86ea24fd4a547c1a4b2b6e3a4f04a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carrotTimer: 4
   requiredCarrotsForAttacking: 4
 --- !u!61 &349739160
 BoxCollider2D:
@@ -763,6 +763,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93f7d295ecb84830875aeee5ffe4830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackPower: 1
+  wolf: {fileID: 1553281432}
 --- !u!1 &467573018
 GameObject:
   m_ObjectHideFlags: 0
@@ -1066,7 +1068,7 @@ GameObject:
   - 114: {fileID: 868495759}
   m_Layer: 0
   m_Name: CarrotSpawner
-  m_TagString: Untagged
+  m_TagString: CarrotSpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1916,9 +1918,6 @@ GameObject:
   - 124: {fileID: 1378528731}
   - 81: {fileID: 1378528730}
   - 20: {fileID: 1378528733}
-  - 114: {fileID: 1378528737}
-  - 61: {fileID: 1378528736}
-  - 61: {fileID: 1378528735}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1996,43 +1995,6 @@ RectTransform:
   m_AnchoredPosition: {x: 8.02000046, y: 4.46999979}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
---- !u!61 &1378528735
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1378528729}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Size: {x: 1, y: 1}
-  m_Center: {x: 0, y: 0}
---- !u!61 &1378528736
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1378528729}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Size: {x: 1, y: 1}
-  m_Center: {x: 0, y: 0}
---- !u!114 &1378528737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1378528729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 709fd7f94224243d18617d1539a6ed66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  horizontalMovementR: 1
-  horizontalMovementL: -1
-  player: {fileID: 349739153}
 --- !u!1 &1386022017
 GameObject:
   m_ObjectHideFlags: 0
@@ -2128,6 +2090,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1553281434}
   - 212: {fileID: 1553281433}
+  - 61: {fileID: 1553281435}
+  - 114: {fileID: 1553281437}
+  - 50: {fileID: 1553281438}
+  - 114: {fileID: 1553281436}
   m_Layer: 0
   m_Name: Wolf
   m_TagString: Untagged
@@ -2169,6 +2135,60 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
+--- !u!61 &1553281435
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1553281432}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 2.5, y: 1.83000004}
+  m_Center: {x: 0, y: .915000021}
+--- !u!114 &1553281436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1553281432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2565e08f24d86459ca1b71181b21e5b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 4
+--- !u!114 &1553281437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1553281432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 709fd7f94224243d18617d1539a6ed66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  horizontalMovementR: 1
+  horizontalMovementL: -1
+  player: {fileID: 349739153}
+  attackPower: 0
+--- !u!50 &1553281438
+Rigidbody2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1553281432}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_FixedAngle: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!1 &1555627925
 GameObject:
   m_ObjectHideFlags: 0
