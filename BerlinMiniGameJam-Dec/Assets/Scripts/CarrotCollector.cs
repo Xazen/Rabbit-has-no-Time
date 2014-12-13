@@ -4,15 +4,23 @@ using System.Collections;
 public class CarrotCollector : MonoBehaviour 
 {
 	[SerializeField]
-	float carrotTimer = 4.0f;
+	float carrotTimer = 4;
+	[SerializeField]
 	int requiredCarrotsForAttacking = 4;
-	
+
+	private AngryMode angryMode;
 	private int carrotCounter = 0;
+
+	void Start()
+	{
+		angryMode = this.GetComponent<AngryMode> ();
+	}
 
 	void Update()
 	{
-		if (carrotCounter > requiredCarrotsForAttacking) 
+		if (angryMode) 
 		{
+
 		}
 	}
 
@@ -20,8 +28,14 @@ public class CarrotCollector : MonoBehaviour
 	{
 		if (col.gameObject.name == "Carrot(Clone)") 
 		{
-			Destroy(col.gameObject);
 			carrotCounter++;
+			Debug.Log("carrot counter: " + carrotCounter);
+			Destroy(col.gameObject);
+
+			if (carrotCounter == requiredCarrotsForAttacking)
+			{
+				angryMode.activateAngryMode();
+			}
 		}
 	}
 }

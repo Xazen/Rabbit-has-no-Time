@@ -1,33 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WolfMove : MonoBehaviour {
+public class PlayerMove : MonoBehaviour {
 
 	[SerializeField]
-	private float speed = 3;
-	[SerializeField]
-	private float horizontalMovementR = 5;
-	[SerializeField]
-	private float horizontalMovementL = -5;
-	private GameObject player;
-	private GameObject enemy;
+	private float speed = 10;
+
 	// Use this for initialization
 	void Start () {
-		player = GameObject.FindGameObjectWithTag ("Player");
-		enemy = GameObject.FindGameObjectWithTag ("Enemy");
+	
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		float horizontalMovement = Input.GetAxis ("Horizontal");
 
-	}
-	void moveLeft() {
-		//MakeAnimationLeft
-		this.transform.localPosition = new Vector3 (this.transform.localPosition.x + horizontalMovementL * Time.deltaTime * speed, this.transform.localPosition.y);
-	}
-
-	void moveRight() {
-		//MakeAnimationRight
-		this.transform.localPosition = new Vector3 (this.transform.localPosition.x + horizontalMovementR * Time.deltaTime * speed, this.transform.localPosition.y);
+		this.transform.localPosition = new Vector3 (this.transform.localPosition.x + horizontalMovement * Time.deltaTime * speed, this.transform.localPosition.y);
 	}
 }
