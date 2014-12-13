@@ -389,4 +389,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e163a862de84eb7acc2d8c769c7396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundHeight: .5
+  groundHeight: 1
