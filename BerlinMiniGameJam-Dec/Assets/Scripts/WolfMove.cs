@@ -15,6 +15,8 @@ public class WolfMove : MonoBehaviour {
 	private int attackPower = 1;
 	[SerializeField]
 	private float attackFrequency = 2.0f;
+	[SerializeField]
+	AudioClip punch;
 
 	private float attackTimer = 0.0f;
 	private RabbitHealth rabbitHealth;
@@ -65,6 +67,7 @@ public class WolfMove : MonoBehaviour {
 	void attack()
 	{
 		attackTimer = 0;
+		this.audio.PlayOneShot(this.punch);
 		rabbitHealth.hurt (attackPower);
 		player.transform.localPosition = new Vector3 (player.transform.localPosition.x, player.transform.localPosition.y, player.transform.localPosition.z);
 		Debug.Log ("Wolf attack");
