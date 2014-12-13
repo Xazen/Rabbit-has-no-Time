@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\PlayerMove.cs" />
      <Compile Include="Assets\Scripts\RabbitHealth.cs" />
      <Compile Include="Assets\Scripts\WolfMove.cs" />
+     <Compile Include="Assets\Scripts\hole.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>

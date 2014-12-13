@@ -35,7 +35,7 @@ public class AngryMode : MonoBehaviour {
 		}
 		if (angryTimer >= angryFrequency) 
 		{
-			Debug.Log ("ANGRY MODE OFF");
+			//Debug.Log ("ANGRY MODE OFF");
 			deactivateAngryMode();
 
 		}
@@ -48,7 +48,7 @@ public class AngryMode : MonoBehaviour {
 	void punch ()
 	{
 		punchTimer = 0;
-		Debug.Log ("punch");
+		//Debug.Log ("punch");
 		if (isCollidingWithWolf) 
 		{
 			wolfHealth.hurt(attackPower);

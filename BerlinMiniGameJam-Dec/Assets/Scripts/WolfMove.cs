@@ -13,8 +13,9 @@ public class WolfMove : MonoBehaviour {
 	private GameObject player;
 	[SerializeField]
 	private int attackPower = 1;
+	[SerializeField]
+	private float attackFrequency = 2.0f;
 
-	private float attackFrequency = 3.0f;
 	private float attackTimer = 0.0f;
 	private RabbitHealth rabbitHealth;
 

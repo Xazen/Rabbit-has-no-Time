@@ -729,6 +729,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  canUseHole: 1
+  holeUseFrequency: 2
+  useHoleTimer: 0
 --- !u!114 &349739159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -874,6 +877,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 719239141}
   - 212: {fileID: 719239140}
+  - 61: {fileID: 719239143}
+  - 114: {fileID: 719239142}
   m_Layer: 0
   m_Name: hole
   m_TagString: Untagged
@@ -915,6 +920,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1271518236}
   m_RootOrder: 0
+--- !u!114 &719239142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 719239139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab2a42a42d96494286ea0dc43671d5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 349739153}
+  otherHole1: {fileID: 1140218022}
+  otherHole2: {fileID: 859042845}
+--- !u!61 &719239143
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 719239139}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 1.60000002, y: .5}
+  m_Center: {x: 0, y: 0}
 --- !u!1 &774882627
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,6 +1046,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 859042846}
   - 212: {fileID: 859042847}
+  - 114: {fileID: 859042848}
+  - 61: {fileID: 859042849}
   m_Layer: 0
   m_Name: hole
   m_TagString: Untagged
@@ -1057,6 +1089,31 @@ SpriteRenderer:
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 0decc2dcfd4ac534889b7dd642cb1260, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &859042848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 859042845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab2a42a42d96494286ea0dc43671d5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 349739153}
+  otherHole1: {fileID: 719239139}
+  otherHole2: {fileID: 1140218022}
+--- !u!61 &859042849
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 859042845}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 1.60000002, y: .5}
+  m_Center: {x: 0, y: 0}
 --- !u!1 &868495758
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,6 +1630,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 1140218023}
   - 212: {fileID: 1140218024}
+  - 114: {fileID: 1140218025}
+  - 61: {fileID: 1140218026}
   m_Layer: 0
   m_Name: hole
   m_TagString: Untagged
@@ -1614,6 +1673,31 @@ SpriteRenderer:
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 0decc2dcfd4ac534889b7dd642cb1260, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &1140218025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1140218022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab2a42a42d96494286ea0dc43671d5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 349739153}
+  otherHole1: {fileID: 719239139}
+  otherHole2: {fileID: 859042845}
+--- !u!61 &1140218026
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1140218022}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 1.60000002, y: .5}
+  m_Center: {x: 0, y: 0}
 --- !u!1 &1166695422
 GameObject:
   m_ObjectHideFlags: 0
@@ -2169,11 +2253,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709fd7f94224243d18617d1539a6ed66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 1
   horizontalMovementR: 1
   horizontalMovementL: -1
   player: {fileID: 349739153}
-  attackPower: 0
+  attackPower: 1
+  attackFrequency: 2
 --- !u!50 &1553281438
 Rigidbody2D:
   m_ObjectHideFlags: 0
