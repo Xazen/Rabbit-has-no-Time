@@ -23,8 +23,8 @@ public class CarrotSpawner : MonoBehaviour {
 		{
 			spawnTimer = 0;
 			GameObject spawningCarrot = (GameObject)GameObject.Instantiate(carrot);
-			float randomX = Random.Range(0, 19.2);
-			spawningCarrot.transform.localPosition = new Vector3(randomX, 10.8);
+			float randomX = Random.Range(0, 19);
+			spawningCarrot.transform.localPosition = new Vector3(randomX, 10);
 		}
 
 	}
