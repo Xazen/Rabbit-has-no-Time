@@ -46,8 +46,9 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CarrotCollector.cs" />
-     <Compile Include="Assets\CarrotSpawner.cs" />
+     <Compile Include="Assets\Scripts\CarrotCollector.cs" />
+     <Compile Include="Assets\Scripts\CarrotSpawner.cs" />
+     <Compile Include="Assets\Scripts\ExpireTimer.cs" />
      <Compile Include="Assets\Scripts\GroundSize.cs" />
      <Compile Include="Assets\Scripts\PlayerMove.cs" />
   </ItemGroup>
