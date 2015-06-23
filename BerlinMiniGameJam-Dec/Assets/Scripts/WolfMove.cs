@@ -20,10 +20,12 @@ public class WolfMove : MonoBehaviour {
 
 	private float attackTimer = 0.0f;
 	private RabbitHealth rabbitHealth;
+	AngryMode angryMode;
 
 	void Start()
 	{
 		rabbitHealth = player.GetComponent<RabbitHealth> ();
+		angryMode = player.GetComponent<AngryMode> ();
 	}
 
 	// Update is called once per frame
@@ -57,7 +59,7 @@ public class WolfMove : MonoBehaviour {
 		Debug.Log ("wolf collision" + col.gameObject.name);
 		if (col.gameObject.name == "Rabbit") 
 		{
-			if (attackTimer >= attackFrequency)
+			if (attackTimer >= attackFrequency && !angryMode.activated)
 			{
 				attack();
 			}
@@ -67,7 +69,7 @@ public class WolfMove : MonoBehaviour {
 	void attack()
 	{
 		attackTimer = 0;
-		this.audio.PlayOneShot(this.punch);
+		this.GetComponent<AudioSource>().PlayOneShot(this.punch);
 		rabbitHealth.hurt (attackPower);
 		player.transform.localPosition = new Vector3 (player.transform.localPosition.x, player.transform.localPosition.y, player.transform.localPosition.z);
 		Debug.Log ("Wolf attack");

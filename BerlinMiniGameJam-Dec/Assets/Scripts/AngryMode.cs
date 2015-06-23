@@ -8,7 +8,7 @@ public class AngryMode : MonoBehaviour {
 	[SerializeField]
 	private GameObject wolf;
 
-	private bool activated = false;
+	public bool activated = false;
 	private float punchFrequency = 2;
 	private float punchTimer = 0;
 	private float angryFrequency = 4;
@@ -55,7 +55,7 @@ public class AngryMode : MonoBehaviour {
 		if (isCollidingWithWolf) 
 		{
 			wolfHealth.hurt(attackPower);
-			this.audio.PlayOneShot(this.punchSound);
+			this.GetComponent<AudioSource>().PlayOneShot(this.punchSound);
 		}
 	}
 
@@ -64,6 +64,7 @@ public class AngryMode : MonoBehaviour {
 		Debug.Log ("ANGRY MODE ON");
 		activated = true;
 		carrotSpawner.deactivateSpawner ();
+		this.transform.localScale = new Vector3 (0.5f, 0.5f, 1);
 	}
 	public void deactivateAngryMode()
 	{
@@ -72,6 +73,7 @@ public class AngryMode : MonoBehaviour {
 		activated = false;
 		carrotCollector.resetCounter ();
 		carrotSpawner.activateSpawner ();
+		this.transform.localScale = new Vector3 (0.35f, 0.35f, 1);
 	}
 
 	void OnTriggerEnter2D(Collider2D collider)
